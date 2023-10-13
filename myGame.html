@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./myGame.css">
+    <script src="./myGame.js"></script>
+    
+</head>
+
+<body id="all">
+    <button onclick="starting()" class="startButton" id="startButt">Start!</button>
+    <button onclick="history()" class="historyButton" id="historyButt">History!</button>
+    <button onclick="cinematic()" class="cinematicButton" id="cinematicButt">Cinematic!</button>
+
+    <iframe class="videoCinematix" id="videoPlay"
+        src="https://www.youtube.com/embed/HFKHnbvvR_Q?enablejsapi=1"></iframe>
+
+    <button onclick="back()" class="backButton" id="backButt">Back!</button>
+
+    <div class="historyText" id="historyT">The History of Mining — Archaeological evidence suggests that mining first
+        occurred in prehistoric ptoryTeriods. The first mined material was flint,
+        which humans broke into sharp-edged bits to use as scrapers, knives, and arrowheads due to its conchoidal
+        breaking
+        pattern.
+        Early mine shafts uncovered in France and Britain containing flint dated back to the Neolithic Period, or New
+        Stone
+        Age
+        , and were up to 100 metres deep. However, the world’s oldest known underground mine, located at Bomvu Ridge in
+        Swaziland’s Ngwenya mountains,
+        is believed to be over 40,000 years old. People extracted ochre, a natural clay earth pigment used as body
+        colouration during funeral and ceremonial rituals.
+        Gold was one of the first metals mined from sand and gravel streambeds, where it appeared naturally as a pure
+        metal
+        due to its chemical stability.
+        Early civilizations prized gold for several reasons — it is visually appealing, does not corrode, is
+        multi-faced,
+        and is useful in many different applications.
+        Ancient cultures saw the value in gold,and lavishly decorated tombs and temples, paying homage to gods and
+        significant figures.</div>
+
+
+    <div id="allGameDisplay" class="allGameClass">
+
+        <span class="instructions">Click on the human pictures for action and build the statuette!</span>
+
+        <img src="https://i.postimg.cc/7hY43MHC/Statuette.png" class="statuette" id="statuettePic">
+        <img src="https://i.postimg.cc/YC1RPBzj/yellow-Flow.png" class="goldFlow" id="build">
+        <button class="statuetteButton" onclick="statuette()">Statuette!</button>
+        <span
+            style="position: absolute;font-size:1.5vw;margin-left:82.5%;margin-top: 26%;color:white;border: 2px solid white;border-radius: 10px;padding: 2px;">Part:1
+            Gold and 200 Steal</span>
+
+        <span id="bankBronze"
+            style="position:absolute; margin-left:7%;margin-top:3.5%;font-size:2vw;color:white;">0</span>
+        <span id="bankSilver"
+            style="position:absolute; margin-left:7%;margin-top:6.5%;font-size:2vw;color:white;">0</span>
+        <span id="bankGold"
+            style="position:absolute; margin-left:7%;margin-top:9.5%;font-size:2vw;color:white;">0</span>
+
+
+        <button onclick="deposit()" id="bankButt" class="depositButton">Deposit!</button>
+
+        <span class="bronzeFarm">Bronze: <span id="number">0</span></span>
+
+        <img src="https://i.postimg.cc/c4mcXqkJ/bronze.png" id="moveImage"
+            style=" position:absolute;margin-left:41%;margin-top:30.5%;width:3%;height:auto;">
+        <img src="https://i.postimg.cc/59LN2yHv/Steel.png" id="moveSteel"
+            style="width: 3%;height: auto;position: absolute;margin-left: 59.5%;margin-top: 30.5%;">
+        <img src="https://i.postimg.cc/nhdCZm9b/upPic.png" class="clickPic" id="click" onclick="clicker()">
+
+        <span
+            style="position: absolute;margin-left: 62%;margin-top: 47%;font-size: 1.5vw;color:white;border: 2px solid white;border-radius: 10px;padding: 2px;">Worker:
+            <span id="workerCost">20</span> Bronze</span>
+        <span class="CapacityClass">Capacity: <span id="workerCapacity">10</span></span>
+        <span class="needetItems" id="warning">Need <span id="item"></span> from shop!!!</span>
+        <span
+            style="position:absolute;margin-left:12%;margin-top:25%;font-size: 2vw;color:white;border:3px solid white;border-radius:10px;padding:2px;"
+            id="shop">Shop!</span>
+
+        <img src="https://i.postimg.cc/fTkjh6pL/Shop.png" class="shopClass" onclick="shop()">
+        <img src="https://i.postimg.cc/4Nh6ftD9/worker-Up-Pic.png" class="workerPic" id="workerImg"
+            onclick="workerClick()">
+        <img src="https://i.postimg.cc/c4mcXqkJ/bronze.png"
+            style="width: 3%;height: auto;position: absolute;margin-left: 3%;margin-top: 3%;">
+        <img src="https://i.postimg.cc/fWYCSSxm/silver.png"
+            style="width: 3%;height: auto;position: absolute;margin-left: 3%;margin-top: 6%;">
+        <img src="https://i.postimg.cc/tJGzm9Hs/gold.png"
+            style="width: 3%;height: auto;position: absolute;margin-left: 3%;margin-top: 9%;">
+        <span class="statuetteClick" id="notEnough">Not enough resources!</span>
+
+        <div class="black"></div>
+    </div>
+    <span class="congratulations" id="done">Congratulations you are done!</span>
+    <img src="https://i.postimg.cc/59LN2yHv/Steel.png" id="steel" class="steelInShop">
+    <span id="steelCount" class="countSteel">0</span>
+    <div id="shopInside" class="insideShop">
+        <img src="https://i.postimg.cc/TY41WP0V/shelves.webp"
+            style="position: absolute;width: 35%;height:auto;margin-left: 34%;margin-top: 3%;">
+        <img src="https://i.postimg.cc/zfPwq0vh/x.png" id="glovesPic"
+            style="position: absolute;width: 7%;height:auto;margin-left: 58%;margin-top: 4.5%;">
+        <img src="https://i.postimg.cc/zfPwq0vh/x.png" id="bootsPic"
+            style="position: absolute;width: 7%;height:auto;margin-left: 58%;margin-top: 14.5%;">
+        <img src="https://i.postimg.cc/zfPwq0vh/x.png" id="helmetPic"
+            style="position: absolute;width: 7%;height:auto;margin-left: 58%;margin-top: 24.5%;">
+        <img src="https://i.postimg.cc/zfPwq0vh/x.png" id="cuirassPic"
+            style="position: absolute;width: 7%;height:auto;margin-left: 58%;margin-top: 34.5%;">
+        <span class="nowIsNot" id="nowIsNot">now is not the time</span>
+        <span style="position:absolute;font-size:2vw;color:white;margin-left:38%;margin-top:6%">Gloves:<br>5
+            steel</span>
+        <span style="position:absolute;font-size:2vw;color:white;margin-left:38%;margin-top:16%">Boots:<br>15
+            steel</span>
+        <span style="position:absolute;font-size:2vw;color:white;margin-left:38%;margin-top:26%">Helmet:<br>30
+            steel</span>
+        <span style="position:absolute;font-size:2vw;color:white;margin-left:38%;margin-top:36%">Cuirass:<br>60
+            steel</span>
+        <img src="https://i.postimg.cc/52FMxqRd/gloves.png"
+            style="position: absolute;width: 11%;height:auto;margin-left: 46%;margin-top: 3%;" onclick="gloves()">
+        <img src="https://i.postimg.cc/GmF223Qr/boots.png"
+            style="position: absolute;width: 9%;height:auto;margin-left: 47%;margin-top: 14%;" onclick="boots()">
+        <img src="https://i.postimg.cc/LXX6NtM6/helmet.png"
+            style="position: absolute;width: 11%;height:auto;margin-left: 46%;margin-top: 24%;" onclick="helmet()">
+        <img src="https://i.postimg.cc/W3CFZWJP/cuirass.png"
+            style="position: absolute;width: 8%;height:auto;margin-left: 47.5%;margin-top: 34%;" onclick="cuirass()">
+        <button class="backGameButton" id="backGameButt" onclick="backFromShop()">Back</button>
+    </div>
+</body>
+</html>
